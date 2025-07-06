@@ -14,3 +14,9 @@ RUN pip install --no-cache-dir \
     apache-airflow==2.8.1 \
     apache-airflow-providers-microsoft-mssql \
     "apache-airflow-providers-openlineage>=1.4.0,<1.8.0"  # Wrap in quotes!
+
+
+USER airflow
+
+# Install kafka-python package
+RUN pip install kafka-python
