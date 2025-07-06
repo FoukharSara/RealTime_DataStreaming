@@ -4,10 +4,12 @@ import time
 import requests
 from airflow.operators.python import PythonOperator
 from airflow import DAG
+from datetime import datetime
 
-defalt_args = {
+
+default_args = {
     'owner': 'airflow',
-    start_date: datetime(2024, 11, 1,10,00)
+    'start_date': datetime(2024, 11, 1,10,00)
 }
 
 def get_data():
