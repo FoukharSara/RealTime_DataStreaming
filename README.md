@@ -10,4 +10,5 @@ run to create ur apache airflow account as login `admin` and password `admin`
 Architecture
     ![alt text](image.png)
 
+### you have to run the producer twice cuz the first one time it creates the topic and for the second time it adds the message in messages
     
