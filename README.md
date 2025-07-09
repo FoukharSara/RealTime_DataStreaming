@@ -1,5 +1,7 @@
 ### Architecture
-![alt text](image-1.png)
+![alt text](image.png)
+
+
 start containers with:
     `docker-compose up -d`
 
