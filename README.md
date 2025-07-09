@@ -19,4 +19,22 @@ run to create ur apache airflow account as login `admin` and password `admin`
     `docker exec -it cassandra cqlsh`
     `$env:PYSPARK_PYTHON = "python"`
 
+### to run the spark file
+    `spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0,com.datastax.spark:spark-cassandra-connector_2.12:3.4.1 spark_consumer.py`
+
+## --packages ...
+This downloads the needed connectors automatically:
+
+    org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0
+    → This lets Spark talk to Kafka.
+
+    2.12: Scala version
+    3.5.0: Spark version
+
+    com.datastax.spark:spark-cassandra-connector_2.12:3.4.1
+    → This lets Spark write to a Cassandra database.
+
+## data in Cassandra is something like this
+![alt text](image-1.png)
+
     
