@@ -1,5 +1,5 @@
-# Remove ZOOKEEPER
-
+### Architecture
+![alt text](image-1.png)
 start containers with:
     `docker-compose up -d`
 
@@ -9,7 +9,6 @@ run to start db
 run to create ur apache airflow account as login `admin` and password `admin`
     `docker-compose run --rm airflow-webserver airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin`
 
-### Architecture
     
 
 ### you have to run the producer twice cuz the first one time it creates the topic and for the second time it adds the message in messages
