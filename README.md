@@ -1,3 +1,5 @@
+# Remove ZOOKEEPER
+
 start containers with:
     `docker-compose up -d`
 
@@ -7,8 +9,13 @@ run to start db
 run to create ur apache airflow account as login `admin` and password `admin`
     `docker-compose run --rm airflow-webserver airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin`
 
-Architecture
-    ![alt text](image.png)
+### Architecture
+    
 
 ### you have to run the producer twice cuz the first one time it creates the topic and for the second time it adds the message in messages
+
+### to access the database u have to do this command
+    `docker exec -it cassandra cqlsh`
+    `$env:PYSPARK_PYTHON = "python"`
+
     

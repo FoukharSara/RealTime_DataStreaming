@@ -109,7 +109,7 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://host.docker.internal:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
       KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
@@ -195,6 +195,8 @@ services:
       interval: 5s
       retries: 5
     restart: always
+    networks:
+      - confluent
 
   redis:
     image: redis:latest
@@ -206,6 +208,8 @@ services:
       timeout: 30s
       retries: 50
     restart: always
+    networks:
+      - confluent 
 
   airflow-webserver:
     <<: *airflow-common
@@ -223,6 +227,8 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+    networks:
+    - confluent
 
   airflow-scheduler:
     <<: *airflow-common
@@ -237,6 +243,8 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+    networks:
+      - confluent
     
   
   spark-master:
@@ -284,6 +292,8 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+    networks:
+      - confluent
 
   airflow-triggerer:
     <<: *airflow-common
@@ -298,6 +308,8 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+    networks:
+      - confluent
 
   airflow-init:
     <<: *airflow-common
@@ -322,6 +334,8 @@ services:
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
       _PIP_ADDITIONAL_REQUIREMENTS: 'apache-airflow-providers-microsoft-mssql'
     user: "0:0"
+    networks:
+      - confluent
     volumes:
       - ${AIRFLOW_PROJ_DIR:-.}:/sources
 
@@ -337,6 +351,8 @@ services:
       - bash
       - -c
       - airflow
+    networks:
+      - confluent
 
   # You can enable flower by adding "--profile flower" option e.g. docker-compose --profile flower up
   # or by explicitly targeted on the command line e.g. docker-compose up flower.
