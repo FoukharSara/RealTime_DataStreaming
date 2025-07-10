@@ -385,10 +385,13 @@ services:
       - HEAP_NEWSIZE=100M
       - CASSANDRA_USERNAME=cassandra
       - CASSANDRA_PASSWORD=cassandra
+    volumes:
+      - cassandra-data:/var/lib/cassandra
     networks:
       - confluent
 networks:
   confluent:
 
 volumes:
+  cassandra-data:
   postgres-db-volume:

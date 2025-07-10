@@ -1,7 +1,9 @@
 ### Architecture
 ![alt text](image.png)
 
-
+run the venv 
+    `.\testenv\scripts\activate`
+     `$env:PYSPARK_PYTHON = "python"`
 start containers with:
     `docker-compose up -d`
 
@@ -17,7 +19,7 @@ run to create ur apache airflow account as login `admin` and password `admin`
 
 ### to access the database u have to do this command
     `docker exec -it cassandra cqlsh`
-    `$env:PYSPARK_PYTHON = "python"`
+   
 
 ### to run the spark file
     `spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0,com.datastax.spark:spark-cassandra-connector_2.12:3.4.1 spark_consumer.py`
