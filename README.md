@@ -1,5 +1,5 @@
 ### Architecture
-![alt text](image.png)
+![alt text](image-2.png)
 
 run the venv 
     `.\testenv\scripts\activate`
